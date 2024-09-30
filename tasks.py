@@ -1,8 +1,8 @@
 import time
 from celery import Celery
-from maths import add_nums
+from maths import add_nums, square_num
 
-print("hello world")
+# print("hello world")
 app = Celery(
     "tasks", 
     broker="redis://localhost", 
@@ -10,6 +10,7 @@ app = Celery(
     )
 
 app.task(add_nums)
+app.task(square_num)
 
 
 if __name__ == '__main__':

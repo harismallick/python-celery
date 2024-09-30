@@ -7,5 +7,11 @@ def add_nums(*nums) -> int:
 
     for i in nums:
         sum += i
-    time.sleep(5)
+    # time.sleep(5)
     return sum
+
+@shared_task
+def square_num(num: int) -> int:
+    # x = 5 + "hello"
+    return num * num
+
