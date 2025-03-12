@@ -1,8 +1,9 @@
 import time
-from tasks import add_nums, square_num
+from tasks import add_nums, square_num, read_dir, read_file
 from uuid import uuid4, UUID
 
-results_promise: list = []
+# Runner test 1:
+# results_promise: list = []
 
 # for i in range(5):
 #     # For celery to generate its own id for jobs:
@@ -24,5 +25,25 @@ results_promise: list = []
 #     print(result.get())
 # print(type(results_promise[0]))
 
-result: int = add_nums.apply_async((1,2,3,4,5), link=square_num.s(), countdown=10)
-print(result)
+# Runner test 2:
+# result: int = add_nums.apply_async((1,2,3,4,5), link=square_num.s(), countdown=10)
+# print(result)
+
+def path_runner(path: str) -> None:
+
+    read_dir.apply_async([path], countdown=5)
+    # if not is_file:
+    #     print("Celery worker detected no file.")
+    #     path_runner(path)
+    
+    # print("Celery worker detected files in given directory.")
+
+    return
+
+
+
+if __name__ == '__main__':
+    
+    path_runner("./test_dir")
+    # path_runner("./test_dirdsak;lfjdlk;fjdask;fj")
+    pass

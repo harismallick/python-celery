@@ -1,6 +1,7 @@
 import time
 from celery import Celery
 from maths import add_nums, square_num
+from file_read import read_dir, read_file
 
 # print("hello world")
 app = Celery(
@@ -11,6 +12,8 @@ app = Celery(
 
 app.task(add_nums)
 app.task(square_num)
+app.task(read_dir)
+app.task(read_file)
 
 
 if __name__ == '__main__':
